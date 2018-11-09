@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ProductApp</title>
+</head>
+<body>
+  <h1>My Products App</h1>
+
+  <button id="getproduct">View Products</button>
+  <button id="updateproduct">Update Product</button>
+  <button id="delproduct">Delete Product</button>
+  <hr>
+  <div id="output"></div>
+  
+  <h3>Add Product</h3>
+  <form id="addproduct">
+    <input type="text" id="category" placeholder="Category"/>
+    <input type="type" id="name" placeholder="product name" />
+    <input type="number" id="price" placeholder="price" />
+    <input type="submit" value="submit">
+  </form>
+
+  <script>
+    let pro_view = document.getElementById('output')
+    document.getElementById('getproduct').addEventListener('click', getproducts)
+    
+
+    function getproducts(){
+      fetch('https://localhost:4000/products/allproduct')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        let {availpro} = data
+        console.log(availpro)
+        let output = '<h4>Products</h4>'
+        availpro.forEach((allproducts) => {
+          output += `
+          <ul>
+            <li>Category: ${allproducts.category}</li>
+            <li>name: ${allproducts.name}</li>
+            <li>price: ${allproducts.price}</li>
+          </ul>
+          `;
+          
+        });
+        pro_view.innerHTML = output
+      })
+      .catch((err) => console.log(err))
+    }
+    
+  </script>
+</body>
+</html>

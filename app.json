@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "expo": {
     "sdkVersion": "27.0.0",
@@ -7,3 +8,11 @@
   }
   
 }
+||||||| merged common ancestors
+=======
+{
+  "expo": {
+    "sdkVersion": "27.0.0"
+  }
+}
+>>>>>>> 30e17ab13d857cdf04485a54259f62db4654b608
